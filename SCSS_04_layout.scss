@@ -1,0 +1,174 @@
+// ============================================
+// JURO Spain - Layout Components
+// Containers, Grids & Structural Elements
+// ============================================
+
+// Main Container
+.container {
+  width: 100%;
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $space-6;
+  
+  @include respond-below('md') {
+    padding: 0 $space-4;
+  }
+}
+
+.container-narrow {
+  max-width: $container-narrow;
+}
+
+// Wrapper for content sections
+.wrapper {
+  max-width: $container-narrow;
+  margin: 0 auto;
+  padding: 0 $space-6;
+  
+  @include respond-below('md') {
+    padding: 0 $space-4;
+  }
+}
+
+// Section Spacing
+section {
+  padding: $space-16 0;
+  
+  @include respond-below('md') {
+    padding: $space-10 0;
+  }
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: $space-12;
+  
+  h2 {
+    margin-top: 0;
+    position: relative;
+    display: inline-block;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -$space-3;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, $primary-color, $accent-color);
+      border-radius: $radius-full;
+    }
+  }
+  
+  .section-subtitle {
+    font-size: $font-size-lg;
+    color: $text-muted;
+    margin-top: $space-6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+// Grid System
+.grid {
+  display: grid;
+  gap: $space-8;
+}
+
+.grid-2 {
+  @extend .grid;
+  grid-template-columns: repeat(2, 1fr);
+  
+  @include respond-below('md') {
+    grid-template-columns: 1fr;
+  }
+}
+
+.grid-3 {
+  @extend .grid;
+  grid-template-columns: repeat(3, 1fr);
+  
+  @include respond-below('lg') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @include respond-below('sm') {
+    grid-template-columns: 1fr;
+  }
+}
+
+.grid-4 {
+  @extend .grid;
+  grid-template-columns: repeat(4, 1fr);
+  
+  @include respond-below('lg') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @include respond-below('sm') {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Flexbox Utilities
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  @include flex-center;
+}
+
+.flex-between {
+  @include flex-between;
+}
+
+.flex-column {
+  @include flex-column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.gap-4 {
+  gap: $space-4;
+}
+
+.gap-6 {
+  gap: $space-6;
+}
+
+.gap-8 {
+  gap: $space-8;
+}
+
+// Page Layout
+.page-content {
+  min-height: calc(100vh - 200px);
+  padding-top: $space-10;
+  padding-bottom: $space-16;
+}
+
+// Two Column Layout
+.content-sidebar {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: $space-10;
+  
+  @include respond-below('lg') {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sidebar {
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+  
+  @include respond-below('lg') {
+    position: static;
+  }
+}

@@ -1,0 +1,179 @@
+// ============================================
+// JURO Spain - Utility Classes
+// Single-purpose helper classes
+// ============================================
+
+// Display
+.d-none { display: none !important; }
+.d-block { display: block !important; }
+.d-inline { display: inline !important; }
+.d-inline-block { display: inline-block !important; }
+.d-flex { display: flex !important; }
+.d-grid { display: grid !important; }
+
+// Responsive Display
+@include respond-below('md') {
+  .d-md-none { display: none !important; }
+  .d-md-block { display: block !important; }
+}
+
+@include respond-to('md') {
+  .d-md-up-none { display: none !important; }
+  .d-md-up-block { display: block !important; }
+}
+
+// Text Alignment
+.text-left { text-align: left !important; }
+.text-center { text-align: center !important; }
+.text-right { text-align: right !important; }
+
+// Text Colors
+.text-primary { color: $primary-color !important; }
+.text-accent { color: $accent-color !important; }
+.text-dark { color: $dark-red !important; }
+.text-muted { color: $text-muted !important; }
+.text-white { color: white !important; }
+
+// Background Colors
+.bg-primary { background-color: $primary-color !important; }
+.bg-accent { background-color: $accent-color !important; }
+.bg-light { background-color: $bg-color !important; }
+.bg-white { background-color: $card-bg !important; }
+.bg-dark { background-color: $dark-red !important; }
+
+// Font Weight
+.fw-normal { font-weight: $font-weight-normal !important; }
+.fw-medium { font-weight: $font-weight-medium !important; }
+.fw-semibold { font-weight: $font-weight-semibold !important; }
+.fw-bold { font-weight: $font-weight-bold !important; }
+
+// Font Size
+.fs-sm { font-size: $font-size-sm !important; }
+.fs-base { font-size: $font-size-base !important; }
+.fs-lg { font-size: $font-size-lg !important; }
+.fs-xl { font-size: $font-size-xl !important; }
+.fs-2xl { font-size: $font-size-2xl !important; }
+
+// Spacing - Margin
+.m-0 { margin: 0 !important; }
+.mt-0 { margin-top: 0 !important; }
+.mb-0 { margin-bottom: 0 !important; }
+
+.mt-4 { margin-top: $space-4 !important; }
+.mt-6 { margin-top: $space-6 !important; }
+.mt-8 { margin-top: $space-8 !important; }
+.mt-10 { margin-top: $space-10 !important; }
+.mt-12 { margin-top: $space-12 !important; }
+
+.mb-4 { margin-bottom: $space-4 !important; }
+.mb-6 { margin-bottom: $space-6 !important; }
+.mb-8 { margin-bottom: $space-8 !important; }
+.mb-10 { margin-bottom: $space-10 !important; }
+.mb-12 { margin-bottom: $space-12 !important; }
+
+.my-4 { margin-top: $space-4 !important; margin-bottom: $space-4 !important; }
+.my-6 { margin-top: $space-6 !important; margin-bottom: $space-6 !important; }
+.my-8 { margin-top: $space-8 !important; margin-bottom: $space-8 !important; }
+
+.mx-auto { margin-left: auto !important; margin-right: auto !important; }
+
+// Spacing - Padding
+.p-0 { padding: 0 !important; }
+.p-4 { padding: $space-4 !important; }
+.p-6 { padding: $space-6 !important; }
+.p-8 { padding: $space-8 !important; }
+
+.py-4 { padding-top: $space-4 !important; padding-bottom: $space-4 !important; }
+.py-6 { padding-top: $space-6 !important; padding-bottom: $space-6 !important; }
+.py-8 { padding-top: $space-8 !important; padding-bottom: $space-8 !important; }
+.py-10 { padding-top: $space-10 !important; padding-bottom: $space-10 !important; }
+.py-12 { padding-top: $space-12 !important; padding-bottom: $space-12 !important; }
+.py-16 { padding-top: $space-16 !important; padding-bottom: $space-16 !important; }
+
+.px-4 { padding-left: $space-4 !important; padding-right: $space-4 !important; }
+.px-6 { padding-left: $space-6 !important; padding-right: $space-6 !important; }
+.px-8 { padding-left: $space-8 !important; padding-right: $space-8 !important; }
+
+// Width
+.w-full { width: 100% !important; }
+.w-auto { width: auto !important; }
+.max-w-sm { max-width: 400px !important; }
+.max-w-md { max-width: 600px !important; }
+.max-w-lg { max-width: 800px !important; }
+
+// Border Radius
+.rounded { border-radius: $radius-lg !important; }
+.rounded-xl { border-radius: $radius-xl !important; }
+.rounded-2xl { border-radius: $radius-2xl !important; }
+.rounded-full { border-radius: $radius-full !important; }
+
+// Shadows
+.shadow-sm { box-shadow: $shadow-sm !important; }
+.shadow { box-shadow: $shadow-md !important; }
+.shadow-lg { box-shadow: $shadow-lg !important; }
+.shadow-xl { box-shadow: $shadow-xl !important; }
+.shadow-none { box-shadow: none !important; }
+
+// Position
+.relative { position: relative !important; }
+.absolute { position: absolute !important; }
+.fixed { position: fixed !important; }
+.sticky { position: sticky !important; }
+
+// Overflow
+.overflow-hidden { overflow: hidden !important; }
+.overflow-auto { overflow: auto !important; }
+
+// Visibility
+.visible { visibility: visible !important; }
+.invisible { visibility: hidden !important; }
+.opacity-0 { opacity: 0 !important; }
+.opacity-50 { opacity: 0.5 !important; }
+.opacity-100 { opacity: 1 !important; }
+
+// Cursor
+.cursor-pointer { cursor: pointer !important; }
+.cursor-not-allowed { cursor: not-allowed !important; }
+
+// Accessibility
+.sr-only {
+  @include visually-hidden;
+}
+
+// List Styles
+.list-none { list-style: none !important; padding: 0 !important; }
+
+// Truncate Text
+.truncate {
+  @include truncate(1);
+}
+
+.line-clamp-2 {
+  @include truncate(2);
+}
+
+.line-clamp-3 {
+  @include truncate(3);
+}
+
+// Divider
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, $border-color, transparent);
+  margin: $space-8 0;
+}
+
+// Highlight Text
+.highlight {
+  background: linear-gradient(120deg, rgba($accent-color, 0.3) 0%, rgba($accent-color, 0.3) 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 40%;
+  background-position: 0 90%;
+}
+
+// Lead Text
+.lead {
+  font-size: $font-size-xl;
+  line-height: $line-height-relaxed;
+  color: $text-muted;
+}

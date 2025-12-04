@@ -1,0 +1,195 @@
+// ============================================
+// JURO Spain - Buttons & CTAs
+// Interactive Elements with Delight
+// ============================================
+
+// Base Button
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  padding: $space-4 $space-8;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  font-weight: $font-weight-bold;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-wider;
+  border: 2px solid transparent;
+  border-radius: $radius-lg;
+  cursor: pointer;
+  @include smooth-transition(all);
+  position: relative;
+  overflow: hidden;
+  
+  &:hover {
+    text-decoration: none;
+  }
+  
+  @include focus-ring;
+  
+  &:active {
+    transform: scale(0.98);
+  }
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    
+    &:hover {
+      transform: none;
+    }
+  }
+}
+
+// Primary Button (Gold/Accent)
+.btn-primary,
+.cta {
+  @extend .btn;
+  background: linear-gradient(135deg, $accent-color 0%, $accent-dark 100%);
+  color: $dark-red;
+  border-color: $accent-color;
+  box-shadow: 0 4px 14px rgba($accent-color, 0.4);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(white, 0.3), transparent);
+    @include smooth-transition(left);
+  }
+  
+  &:hover {
+    background: white;
+    color: $primary-color;
+    border-color: $accent-color;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba($accent-color, 0.5);
+    
+    &::before {
+      left: 100%;
+    }
+  }
+}
+
+// Secondary Button (Outline)
+.btn-secondary {
+  @extend .btn;
+  background: transparent;
+  color: $primary-color;
+  border-color: $primary-color;
+  
+  &:hover {
+    background: $primary-color;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba($primary-color, 0.3);
+  }
+}
+
+// Ghost Button (Light/Dark contexts)
+.btn-ghost {
+  @extend .btn;
+  background: transparent;
+  color: $dark-red;
+  border-color: transparent;
+  
+  &:hover {
+    background: rgba($accent-color, 0.1);
+    color: $primary-color;
+  }
+}
+
+// White Button (For dark backgrounds)
+.btn-white {
+  @extend .btn;
+  background: white;
+  color: $primary-color;
+  border-color: white;
+  
+  &:hover {
+    background: $bg-color;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  }
+}
+
+// Button Sizes
+.btn-sm {
+  padding: $space-2 $space-4;
+  font-size: $font-size-sm;
+}
+
+.btn-lg {
+  padding: $space-5 $space-10;
+  font-size: $font-size-lg;
+}
+
+// Icon Button
+.btn-icon {
+  padding: $space-3;
+  border-radius: $radius-lg;
+  
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+// Button Group
+.btn-group {
+  display: flex;
+  gap: $space-3;
+  flex-wrap: wrap;
+  
+  &.centered {
+    justify-content: center;
+  }
+}
+
+// Link Button (Text style)
+.btn-link {
+  @extend .btn;
+  background: none;
+  border: none;
+  padding: $space-2;
+  color: $primary-color;
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: $font-weight-semibold;
+  
+  &:hover {
+    color: $primary-dark;
+    text-decoration: underline;
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+// Loading State
+.btn-loading {
+  position: relative;
+  color: transparent !important;
+  pointer-events: none;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

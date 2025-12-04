@@ -1,0 +1,226 @@
+// ============================================
+// JURO Spain - Header & Navigation
+// Sticky Header with Refined UX
+// ============================================
+
+.site-header {
+  background: rgba($bg-color, 0.95);
+  border-bottom: 3px solid $accent-color;
+  padding: $space-4 0;
+  position: sticky;
+  top: 0;
+  z-index: $z-sticky;
+  @include glass-effect(12px);
+  @include smooth-transition(box-shadow, background);
+  
+  &.scrolled {
+    box-shadow: $shadow-lg;
+    background: rgba($bg-color, 0.98);
+  }
+  
+  .container {
+    @include flex-between;
+    flex-wrap: wrap;
+  }
+}
+
+// Logo/Title
+.site-title {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-extrabold;
+  color: $primary-color;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  @include smooth-transition(transform, color);
+  
+  &:hover {
+    transform: scale(1.02);
+    color: $primary-dark;
+    text-decoration: none;
+  }
+  
+  .logo-icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+// Navigation
+.site-nav {
+  display: flex;
+  gap: $space-8;
+  align-items: center;
+  
+  @include respond-below('md') {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    margin-top: $space-4;
+    background: $card-bg;
+    padding: $space-6;
+    border-radius: $radius-xl;
+    box-shadow: $shadow-lg;
+    gap: $space-1;
+    
+    &.active {
+      display: flex;
+      animation: slideDown 0.3s ease;
+    }
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nav-link {
+  color: $dark-red;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-sm;
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-wider;
+  padding: $space-2 $space-3;
+  position: relative;
+  text-decoration: none;
+  border-radius: $radius-lg;
+  @include smooth-transition(color, background);
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, $primary-color, $accent-color);
+    border-radius: $radius-full;
+    @include smooth-transition(width);
+  }
+  
+  &:hover {
+    color: $primary-color;
+    text-decoration: none;
+    
+    &::after {
+      width: 80%;
+    }
+  }
+  
+  &.active {
+    color: $primary-color;
+    
+    &::after {
+      width: 80%;
+    }
+  }
+  
+  @include focus-ring;
+  
+  @include respond-below('md') {
+    width: 100%;
+    text-align: center;
+    padding: $space-4;
+    border-radius: $radius-lg;
+    
+    &:hover {
+      background: rgba($accent-color, 0.1);
+    }
+    
+    &::after {
+      display: none;
+    }
+  }
+}
+
+// Mobile Menu Toggle
+.menu-toggle {
+  @include button-reset;
+  display: none;
+  padding: $space-2;
+  color: $primary-color;
+  border-radius: $radius-lg;
+  @include smooth-transition(background, transform);
+  
+  @include respond-below('md') {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  &:hover {
+    background: rgba($primary-color, 0.1);
+  }
+  
+  &:active {
+    transform: scale(0.95);
+  }
+  
+  @include focus-ring;
+  
+  .menu-icon {
+    width: 24px;
+    height: 24px;
+    position: relative;
+    
+    span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: currentColor;
+      border-radius: $radius-full;
+      position: absolute;
+      left: 0;
+      @include smooth-transition(transform, opacity);
+      
+      &:nth-child(1) { top: 4px; }
+      &:nth-child(2) { top: 11px; }
+      &:nth-child(3) { top: 18px; }
+    }
+  }
+  
+  &.active {
+    .menu-icon span {
+      &:nth-child(1) {
+        transform: rotate(45deg);
+        top: 11px;
+      }
+      &:nth-child(2) {
+        opacity: 0;
+      }
+      &:nth-child(3) {
+        transform: rotate(-45deg);
+        top: 11px;
+      }
+    }
+  }
+}
+
+// Skip Link (Accessibility)
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: $space-4;
+  padding: $space-3 $space-6;
+  background: $primary-color;
+  color: white;
+  font-weight: $font-weight-semibold;
+  border-radius: 0 0 $radius-lg $radius-lg;
+  z-index: $z-tooltip;
+  @include smooth-transition(top);
+  
+  &:focus {
+    top: 0;
+    outline: 2px solid $accent-color;
+    outline-offset: 2px;
+  }
+}

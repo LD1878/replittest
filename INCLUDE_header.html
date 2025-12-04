@@ -1,0 +1,24 @@
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header class="site-header" role="banner">
+  <div class="container">
+    <a href="{{ '/' | relative_url }}" class="site-title">
+      JURO Spain
+    </a>
+    
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span class="menu-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </button>
+    
+    <nav class="site-nav" role="navigation" aria-label="Main navigation">
+      <a href="{{ '/' | relative_url }}" class="nav-link {% if page.url == '/' %}active{% endif %}">Home</a>
+      <a href="{{ '/services/' | relative_url }}" class="nav-link {% if page.url contains '/services' %}active{% endif %}">Services</a>
+      <a href="{{ '/about/' | relative_url }}" class="nav-link {% if page.url contains '/about' %}active{% endif %}">About</a>
+      <a href="{{ '/contact/' | relative_url }}" class="nav-link {% if page.url contains '/contact' %}active{% endif %}">Contact</a>
+    </nav>
+  </div>
+</header>

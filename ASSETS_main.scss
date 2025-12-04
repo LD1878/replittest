@@ -1,0 +1,30 @@
+---
+# Main SCSS File - Jekyll will process this
+---
+
+// ============================================
+// JURO Spain - Professional UX Theme
+// ============================================
+
+// Core
+@import "variables";
+@import "mixins";
+
+// Base
+@import "base";
+
+// Layout
+@import "layout";
+
+// Components
+@import "header";
+@import "hero";
+@import "buttons";
+@import "cards";
+@import "forms";
+@import "footer";
+@import "blog";
+
+// Utilities
+@import "animations";
+@import "utilities";

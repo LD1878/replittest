@@ -1,0 +1,302 @@
+// ============================================
+// JURO Spain - Forms
+// Accessible & User-Friendly Inputs
+// ============================================
+
+// Form Container
+.form-container {
+  @include card-base;
+  padding: $space-10;
+  
+  @include respond-below('md') {
+    padding: $space-6;
+  }
+}
+
+// Form Groups
+.form-group {
+  margin-bottom: $space-6;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Labels
+form label,
+.form-label {
+  display: block;
+  font-weight: $font-weight-semibold;
+  margin-bottom: $space-2;
+  color: $dark-red;
+  font-size: $font-size-sm;
+  
+  .required {
+    color: $primary-color;
+    margin-left: $space-1;
+  }
+}
+
+// Input Base Styles
+%input-base {
+  width: 100%;
+  padding: $space-4;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  color: $text-color;
+  background: $card-bg;
+  border: 2px solid $border-light;
+  border-radius: $radius-lg;
+  @include smooth-transition(border-color, box-shadow, background);
+  
+  &::placeholder {
+    color: $text-light;
+  }
+  
+  &:hover {
+    border-color: $border-color;
+  }
+  
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+    box-shadow: 0 0 0 4px rgba($primary-color, 0.15);
+    background: white;
+  }
+  
+  &:disabled {
+    background: $bg-secondary;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  
+  &.error {
+    border-color: $error;
+    
+    &:focus {
+      box-shadow: 0 0 0 4px rgba($error, 0.15);
+    }
+  }
+  
+  &.success {
+    border-color: $success;
+    
+    &:focus {
+      box-shadow: 0 0 0 4px rgba($success, 0.15);
+    }
+  }
+}
+
+// Text Inputs
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"],
+form input[type="password"],
+form input[type="number"],
+form input[type="url"],
+form input[type="search"],
+form input[type="date"],
+.form-input {
+  @extend %input-base;
+}
+
+// Textarea
+form textarea,
+.form-textarea {
+  @extend %input-base;
+  min-height: 140px;
+  resize: vertical;
+  line-height: $line-height-relaxed;
+}
+
+// Select
+form select,
+.form-select {
+  @extend %input-base;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237C1F1F' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right $space-4 center;
+  padding-right: $space-12;
+  cursor: pointer;
+}
+
+// Checkbox & Radio
+.form-check {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-3;
+  margin-bottom: $space-3;
+  cursor: pointer;
+  
+  input[type="checkbox"],
+  input[type="radio"] {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    accent-color: $primary-color;
+    cursor: pointer;
+  }
+  
+  label {
+    margin-bottom: 0;
+    font-weight: $font-weight-normal;
+    color: $text-color;
+    cursor: pointer;
+  }
+}
+
+// Custom Checkbox
+.checkbox-custom {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-3;
+  cursor: pointer;
+  
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  .checkmark {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    background: $card-bg;
+    border: 2px solid $border-light;
+    border-radius: $radius-md;
+    @include flex-center;
+    @include smooth-transition(all);
+    
+    svg {
+      width: 14px;
+      height: 14px;
+      opacity: 0;
+      transform: scale(0.5);
+      @include smooth-transition(all);
+      color: white;
+    }
+  }
+  
+  &:hover .checkmark {
+    border-color: $primary-color;
+  }
+  
+  input:checked + .checkmark {
+    background: $primary-color;
+    border-color: $primary-color;
+    
+    svg {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  input:focus + .checkmark {
+    box-shadow: 0 0 0 4px rgba($primary-color, 0.15);
+  }
+}
+
+// Help Text
+.form-help {
+  font-size: $font-size-sm;
+  color: $text-muted;
+  margin-top: $space-2;
+}
+
+// Error Message
+.form-error {
+  font-size: $font-size-sm;
+  color: $error;
+  margin-top: $space-2;
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+// Success Message
+.form-success {
+  font-size: $font-size-sm;
+  color: $success;
+  margin-top: $space-2;
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+}
+
+// Input Group (with icon or button)
+.input-group {
+  display: flex;
+  
+  .form-input {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: none;
+  }
+  
+  .btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    flex-shrink: 0;
+  }
+}
+
+// Input with Icon
+.input-icon {
+  position: relative;
+  
+  svg,
+  .icon {
+    position: absolute;
+    left: $space-4;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    color: $text-muted;
+    pointer-events: none;
+  }
+  
+  .form-input {
+    padding-left: $space-12;
+  }
+}
+
+// Form Actions
+.form-actions {
+  display: flex;
+  gap: $space-4;
+  margin-top: $space-8;
+  flex-wrap: wrap;
+  
+  &.centered {
+    justify-content: center;
+  }
+  
+  &.right {
+    justify-content: flex-end;
+  }
+}
+
+// Inline Form
+.form-inline {
+  display: flex;
+  gap: $space-4;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  
+  .form-group {
+    margin-bottom: 0;
+    flex: 1;
+    min-width: 200px;
+  }
+}

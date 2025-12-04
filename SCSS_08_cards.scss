@@ -1,0 +1,296 @@
+// ============================================
+// JURO Spain - Cards & Containers
+// Content Blocks with Visual Hierarchy
+// ============================================
+
+// Base Card
+.card {
+  @include card-base;
+  padding: $space-8;
+  @include card-hover;
+  
+  @include respond-below('md') {
+    padding: $space-6;
+  }
+}
+
+// Service Card (Featured)
+.service-card {
+  @include card-base;
+  padding: $space-8;
+  text-align: center;
+  @include card-hover;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, $primary-color, $accent-color);
+    transform: scaleX(0);
+    transform-origin: left;
+    @include smooth-transition(transform);
+  }
+  
+  &:hover::before {
+    transform: scaleX(1);
+  }
+}
+
+.service-icon {
+  font-size: 3.5rem;
+  margin-bottom: $space-4;
+  display: block;
+  @include smooth-transition(transform);
+  
+  .service-card:hover & {
+    transform: scale(1.1);
+  }
+}
+
+.service-card h3 {
+  color: $dark-red;
+  margin-bottom: $space-3;
+}
+
+.service-card p {
+  color: $text-muted;
+  margin-bottom: 0;
+}
+
+// Services Grid
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: $space-8;
+  margin: $space-12 0;
+}
+
+// Feature Card
+.feature-card {
+  @include card-base;
+  padding: $space-6;
+  display: flex;
+  gap: $space-5;
+  align-items: flex-start;
+  @include card-hover;
+  
+  @include respond-below('sm') {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+}
+
+.feature-icon {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, rgba($primary-color, 0.1), rgba($accent-color, 0.1));
+  border-radius: $radius-xl;
+  @include flex-center;
+  font-size: 1.75rem;
+  color: $primary-color;
+}
+
+.feature-content {
+  h4 {
+    margin-bottom: $space-2;
+    color: $dark-red;
+  }
+  
+  p {
+    color: $text-muted;
+    margin-bottom: 0;
+    font-size: $font-size-sm;
+    line-height: $line-height-relaxed;
+  }
+}
+
+// Stats Card
+.stat-card {
+  @include card-base;
+  padding: $space-8;
+  text-align: center;
+  
+  .stat-number {
+    font-size: $font-size-5xl;
+    font-weight: $font-weight-extrabold;
+    @include gradient-text(linear-gradient(135deg, $primary-color, $accent-color));
+    line-height: 1;
+    margin-bottom: $space-2;
+  }
+  
+  .stat-label {
+    color: $text-muted;
+    font-size: $font-size-sm;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-wider;
+    font-weight: $font-weight-semibold;
+  }
+}
+
+// Testimonial Card
+.testimonial-card {
+  @include card-base;
+  padding: $space-8;
+  position: relative;
+  
+  &::before {
+    content: '"';
+    position: absolute;
+    top: $space-4;
+    left: $space-6;
+    font-size: 4rem;
+    font-family: Georgia, serif;
+    color: rgba($accent-color, 0.3);
+    line-height: 1;
+  }
+}
+
+.testimonial-content {
+  font-size: $font-size-lg;
+  font-style: italic;
+  color: $text-color;
+  margin-bottom: $space-6;
+  line-height: $line-height-relaxed;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+}
+
+.testimonial-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: $radius-full;
+  object-fit: cover;
+  border: 2px solid $accent-color;
+}
+
+.testimonial-info {
+  strong {
+    display: block;
+    color: $dark-red;
+  }
+  
+  span {
+    font-size: $font-size-sm;
+    color: $text-muted;
+  }
+}
+
+// Benefits List
+.benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.benefits-list li {
+  padding: $space-5 $space-6;
+  margin-bottom: $space-4;
+  background: $card-bg;
+  border-left: 4px solid $accent-color;
+  border-radius: 0 $radius-lg $radius-lg 0;
+  box-shadow: $shadow-sm;
+  @include smooth-transition(transform, border-color, box-shadow);
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  
+  &::before {
+    content: '✓';
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(135deg, $accent-color, $accent-dark);
+    color: $dark-red;
+    border-radius: $radius-full;
+    @include flex-center;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-sm;
+  }
+  
+  &:hover {
+    transform: translateX(8px);
+    border-left-color: $primary-color;
+    box-shadow: $shadow-md;
+  }
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Pricing Card
+.pricing-card {
+  @include card-base;
+  padding: $space-10;
+  text-align: center;
+  position: relative;
+  @include card-hover;
+  
+  &.featured {
+    border-color: $primary-color;
+    transform: scale(1.02);
+    
+    &::before {
+      content: 'Popular';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: $primary-color;
+      color: white;
+      padding: $space-1 $space-4;
+      border-radius: $radius-full;
+      font-size: $font-size-xs;
+      font-weight: $font-weight-bold;
+      text-transform: uppercase;
+      letter-spacing: $letter-spacing-wider;
+    }
+  }
+}
+
+.pricing-header {
+  margin-bottom: $space-8;
+  
+  h3 {
+    margin-bottom: $space-2;
+  }
+  
+  .price {
+    font-size: $font-size-5xl;
+    font-weight: $font-weight-extrabold;
+    color: $primary-color;
+    
+    span {
+      font-size: $font-size-lg;
+      font-weight: $font-weight-normal;
+      color: $text-muted;
+    }
+  }
+}
+
+.pricing-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 $space-8;
+  
+  li {
+    padding: $space-3 0;
+    border-bottom: 1px solid $border-light;
+    color: $text-muted;
+    
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
